@@ -1,10 +1,11 @@
 package co.edu.poli.ces4.movie.persistence.entity;
 
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Range;
 
 import java.util.Objects;
 
@@ -13,27 +14,11 @@ import java.util.Objects;
 @Getter
 @Setter
 public class Movie {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "El titulo no puede estar vacido")
     private String title;
-    @NotEmpty(message = "El director no puede estar vacido")
     private String director;
-    @Range(min = 1 - 5)
-    private int rating;
+    private Double rating;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Movie movie = (Movie) o;
-        return Objects.equals(id, movie.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
 }

@@ -9,5 +9,4 @@ public class Response {
 
     private Integer code;
     private Object data;
-
 }
